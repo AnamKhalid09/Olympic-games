@@ -1,0 +1,91 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Visualisation1</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+  
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-light">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{{ url_for('index') }}">Home</a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('total_medals') }}">Ranked Medals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('vis_1') }}">Ranked Participation</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('total_gdp') }}">Ranked GDP</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="{{ url_for('total_pop') }}">Ranked Population</a>
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link active" aria-current="page" href="{{ url_for('top_medals') }}">Medals Top 10</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('total_participation_10') }}">Participation Top 20</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('vis_2') }}">GDP Top 10</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('vis_3') }}">Population Top 10</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('high_chart_stack') }}">Wins Breakdown</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('scatter_plot_gdp') }}">Scatter GDP</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('scatter_plot_pop') }}">Scatter Populations</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pie_region_wins') }}">Pie Regional Medals</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="{{ url_for('pie_region_gdp') }}">Pie Regional GDP</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('pie_region_population') }}">Pie Regional Populations</a>
+                </li>
+                <li class="nav-item">
+                <a class="nav-link" href="{{ url_for('API') }}">API</a>
+                </li>
+            </ul>
+          </div>
+        </div>
+    </nav>
+
+    <div class="card">
+        <div class="card-body">
+            This chart measures each regions total medals.
+            Hover over each section to display the percentage, and click on the ledgend to add or remove sections of the pie chart.
+        </div>
+    </div>
+
+    <div id="plot"></div>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <script 
+    src="static/pie_region_wins.js">
+    </script>
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+</body>
+</html>
