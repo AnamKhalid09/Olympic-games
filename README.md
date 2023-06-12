@@ -197,4 +197,10 @@ To load the visualisations and web portion of this project run the flask_app.py,
 
  
 ## References:
-1: [https://medium.datadriveninvestor.com/is-data-science-ranked-as-the-sexiest-job-for-2023-and-beyond-cf66d8ba5585](https://www.nbcsports.com/bayarea/beijing-2022-winter-olympics/which-countries-have-won-most-olympic-medals)
+1: https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table
+
+2: https://www.kaggle.com/datasets/sudalairajkumar/undata-country-profiles
+
+3: https://www.nbcsports.com/bayarea/beijing-2022-winter-olympics/which-countries-have-won-most-olympic-medals
+
+4: https://www.athleteassessments.com/factors-and-obstacles-influencing-olympic-performance/
