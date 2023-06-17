@@ -9,7 +9,9 @@
 
 According to nbc sports, United States of America has always been on the top and have won maximum medals in the history of Olympic games. Then Russia, Germany, Great Britain and France are among the top performers in the descending order. (See Reference 1)
 
-We decided to conduct our own analysis and to test some of the measurable factors contributing to the success of a countrys' performance in Olympic games. Does GDP or/and population of a country contributes to their success in the Olympic games? Let's find out!
+I decided to conduct my own analysis and to test some of the measurable factors contributing to the success of a countrys' performance in Olympic games. The idea of population and GDP came into my mind from online research. A questionnaire, given to 2100 US Olympians who competed in Olympic games from 1984 to 1998, resulted into top 10 success and failures faced by the Olympians (See Reference 4). Most of the factors pointed towards the financial hardships. The idea of population came from the idea of man power. 
+
+Let's test my hypothesis whether GDP or/and population of a country contributes to their success in the Olympic games?
 
 ### Getting Started
 
@@ -55,15 +57,33 @@ pip install flask
 pip install psycopg2
 ```
 
+- matplotlib
+```
+pip install matplotlib
+```
+
+- numpy
+```
+pip install numpy
+```
+
+- scipy
+```
+pip install scipy
+```
+
 **Note:** The installation instructions are for windows users only. Please check your python environment and install the libraries accordingly.
 
 3: Processes involved:
 
-- ETL pipeline (SQL database)
+- Data was retrieved from two sources. The UN data for country's population and gdp was from Kaggle and the country's Olympic medals data was webscraped from 
+  a Wikipedia table using the library 'Beautiful Soup'. (See References 2 & 3)
+- ETL pipeline (PostgreSQL database)
 - A combination of Webscraping and plotly
 - Python Flask-powered API
 - HTML/CSS
 - JS library (High Chart)
+- Statistical analysis
 
 
 ## Extracting, Transforming and Loading process (ETL)
@@ -72,7 +92,7 @@ Raw data exists in multiple places and forms. In order to perform any kind of da
 
 ### Extract
 
-Extracting includes reading the data from multiple sources. we are using two datasets (CSV files) which you can find in 'Resources' folder as described above. If you're looking for datasets of your choice, keep in mind that they don't have to be CSV files necessarily. They could be any of the following:
+Extracting includes reading the data from multiple sources. we are using two datasets (CSV files) which you can find in 'Resources' folder. If you're looking for datasets of your choice, keep in mind that they don't have to be CSV files necessarily. They could be any of the following:
 - CSV files
 - JSON files
 - HTML tables
@@ -151,7 +171,7 @@ config.py
 
 ## Webscraping
 
-The Olympics data is web scraped from [wikipedia](https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table) on the 27/11/2022. To perform the web scrape process yourself simply run all cells within the webscrape.ipynb file, ensuring all dependencies are installed (pandas
+The Olympics data is web scraped from [wikipedia](https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table). To perform the web scrape process yourself simply run all cells within the webscrape.ipynb file, ensuring all dependencies are installed (pandas
 , requests, bs4). 
 Initially webscrape.ipynb will when check the [wikipedia](https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table) link and receive a response from the webpage. When the response has been filled bs4 is used to then to load the table from [wikipedia](https://en.wikipedia.org/wiki/All-time_Olympic_Games_medal_table) then it will parse this object to pandas allowing it to be cleaned before outputting the olympics_medals_country_wise.csv file. The cleaning that is performed is the removal of the unnecessary columns for this project, removing the original 2 headers and replacing them with a simplified header and removing the country codes from the ‘country’ column so it can be paired to the country_profile_variables.csv. 
 
@@ -167,7 +187,7 @@ Or in short:
 
 ## Flask and web aplications
 
-To load the visualisations and web portion of this project run the flask_app.py, ensuring you have the dependencies (psycopg2, flask, json) and have set up a local SQL database (this is done by running: queries.sql and data_etl.ipynb). The flask_app.py creates a locally hosted web directory on your machine, simply loading the local ip will bring you to the home page (index.html). From there you can follow the ‘nav-bar’ at the top of the web page to direct to each page within the locally hosted site. When flask_app.py is first loaded it will use the psycopg2 library to connect to the SQL database and pull the data from it. It then performs a json dump which is then output in the ‘/api’ directory which is called by other visualisations within the dataset. The directories within the flask server are as follows:
+To load the visualisations and web portion of this project run the flask_app.py, ensuring you have the dependencies (psycopg2, flask, json) and have set up a local SQL database (this is done by running: queries.sql and data_etl.ipynb). The flask_app.py creates a locally hosted web directory on your machine, simply loading the local IP will bring you to the home page (index.html). From there you can follow the ‘nav-bar’ at the top of the web page to direct to each page within the locally hosted site. When flask_app.py is first loaded it will use the psycopg2 library to connect to the SQL database and pull the data from it. It then performs a json dump which is then output in the ‘/api’ directory which is called by other visualisations within the dataset. The directories within the flask server are as follows:
 
 - ’/’ Which load the index.html and is the ‘home page’ for the flask server.
  
@@ -192,8 +212,13 @@ To load the visualisations and web portion of this project run the flask_app.py,
  
 - ’/pie_region_population’ which loads pie_region_population.html that runs pie_region_population.js. Which creates an interactive plotly pie chart that allows the user to select which regions are displayed within the pie chart showing the percentage of each United Nations defined region’s populaiton.
 
+## Statistical Analysis
+
+In correlation.ipynb file, statistical analysis is being done to find out the correlation between measurable factors. The Z-score test was performed to delete the potential outliers.
 
 ## Findings
+
+According to visualisations and statistical analysis, GDP clearly has an effect on country's success while population may or may not have an effect on country's success in Olympic games.
 
  
 ## References:
