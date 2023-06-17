@@ -218,7 +218,7 @@ In correlation.ipynb file, statistical analysis is being done to find out the co
 
 ## Findings
 
-According to visualisations and statistical analysis, GDP clearly has an effect on country's success while population may or may not have an effect on country's success in Olympic games.
+According to visualisations and statistical analysis, GDP clearly has an effect on country's success while population may or may not have an effect on country's success in Olympic games. So the findings prove that my hypothesis is not a null hypothesis instead it's an alternate hypothesis.
 
  
 ## References:
