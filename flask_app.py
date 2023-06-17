@@ -3,6 +3,9 @@ from psycopg2.extras import RealDictCursor
 from flask import Flask, render_template, jsonify
 import config
 import json
+import matplotlib.pyplot as plt
+
+
 app = Flask(__name__)
 
 
@@ -60,11 +63,45 @@ def high_chart_stack():
 
 @app.route('/scatterplot_gdp', methods=['GET', 'POST'])
 def scatter_plot_gdp():
+
+    x_data = [row['gdp'] for row in country_olympics]
+    y_data = [row['total_won'] for row in country_olympics]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x_data, y_data)
+
+    ax.set_xlim(0, 3000000)
+    ax.set_ylim(0, 1400)
+
+    plt.xlabel('GDP')
+    plt.ylabel('Total Medals Won')
+    plt.title('Scatter Plot: GDP vs Total Medals Won')
+
+    plt.savefig('static/scatter_plot_gdp.png')
+    plt.close()
+
     return render_template('scatter_plot_gdp.html')
 
 
 @app.route('/scatterplot_pop', methods=['GET', 'POST'])
 def scatter_plot_pop():
+
+    x_data = [row['population'] for row in country_olympics]
+    y_data = [row['total_won'] for row in country_olympics]
+
+    fig, ax = plt.subplots()
+    ax.scatter(x_data, y_data)
+
+    ax.set_xlim(0, 200000)
+    ax.set_ylim(0, 1400)
+
+    plt.xlabel('Population')
+    plt.ylabel('Total Medals Won')
+    plt.title('Scatter Plot: Population vs Total Medals Won')
+
+    plt.savefig('static/scatter_plot_pop.png')
+    plt.close()
+
     return render_template('scatter_plot_pop.html')
 
 
